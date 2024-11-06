@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row justify-content-center mt-4">
+      <div class="col-lg-8">
+        <div class="card custom-card">
+          <h5 class="card-header text-center"><b>Add Employee</b></h5>
+  
+          <div class="card-body">
+            <form [formGroup]="empForm"  (ngSubmit)="OnSubmit()">
+              <div class="mb-3">
+                <label for="employeeName" class="form-label"><b>Employee Name:</b></label>
+                <input type="text" class="form-control" id="employeeName" formControlName="employeeName">
+                <div *ngIf="formControl['employeeName'].invalid && formControl['employeeName'].touched">
+                  <small class="text-danger" *ngIf="formControl['employeeName'].errors?.['required']">Employee name is required</small>
+                  <small class="text-danger" *ngIf="formControl['employeeName'].errors?.['minlength']">Employee name must be at least 2 characters</small>
+                  <small class="text-danger" *ngIf="formControl['employeeName'].errors?.['maxlength']">Employee name must be up to 50 characters only.</small>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label"><b>Phone number:</b></label>
+                <input type="text" class="form-control" id="phone" formControlName="phone">
+                <div *ngIf="formControl['phone'].invalid && formControl['phone'].touched">
+                  <small class="text-danger" *ngIf="formControl['phone'].errors?.['required']">Phone number is required</small>
+                  <small class="text-danger" *ngIf="formControl['phone'].errors?.['minlength']">Phone number must be of 10 number</small>
+                  <small class="text-danger" *ngIf="formControl['phone'].errors?.['maxlength']">Phone number must be of 10 number only.</small>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label"><b>Email:</b></label>
+                <input type="email" class="form-control" id="email" formControlName="email">
+                <div *ngIf="formControl['email'].invalid && formControl['email'].touched">
+                  <small class="text-danger" *ngIf="formControl['email'].errors?.['required']">Email is required.</small>
+                  <small class="text-danger" *ngIf="formControl['email'].errors?.['email']">Email must be in proper format.</small>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="departmentId" class="form-label"><b>Department:</b></label>
+                <select class="form-select" id="departmentId" formControlName="departmentId">
+                  <option value="" selected disabled>Select Department</option>
+                  <option value="1">Admin</option>
+                  <option value="2">Development</option>
+                  <option value="3">Research</option>
+                  <option value="4">Testing</option>
+                </select>
+                <div *ngIf="formControl['departmentId'].invalid && formControl['departmentId'].touched">
+                  <small class="text-danger" *ngIf="formControl['departmentId'].errors?.['required']">Department is required</small>
+                </div>
+              </div>
+              <div class="d-grid gap-2">
+                <div class="btn-group">
+                  <button id="submitButton" type="submit" class="btn btn-primary" [disabled]="empForm.invalid"><b>Add</b></button> &nbsp;
+                  <a class="btn btn-outline-danger" [routerLink]="['/employeeList']" routerLinkActive="router-link-active"><b>Cancel</b></a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

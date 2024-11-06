@@ -1,0 +1,52 @@
+<div class="container" style="background-color: white;">
+    <br/>
+    <br >
+    <div class="table-responsive" >
+
+        <table class="table table-striped employees-table" style="font-size: smaller; text-align: center; border-color: black; border-top: black;">
+            <thead>
+                <tr>
+                    <th>Sr. No</th>
+                    <th>Name</th>
+                    <th>Phone No.</th>
+                    <th>Email Id</th>
+                    <th>Department</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody >
+
+                <tr *ngFor="let employee of employees" style="vertical-align: middle;">
+                    <td>{{employee.employeeId}}</td>
+                    <td>{{employee.employeeName | capitalize}}</td>
+                    <td>{{employee.phone}}</td>
+                    <td>{{employee.email}}</td>
+                    <td>{{employee.department.departmentName}}</td>
+                    <td>
+                        <a class="btn btn-outline-secondary m-1" [routerLink]="['/employeeDetail',employee.employeeId]" routerLinkActive="router-link-active">
+                            <i class="fas fa-info"></i> Details
+                        </a>
+                        
+                        <a  class="btn btn-outline-info m-1" [routerLink]="['/updateEmployee',employee.employeeId]" routerLinkActive="router-link-active">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <button  class="btn btn-outline-danger m-1"
+                            (click)="deleteEmployee(employee.employeeId)">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <ng-template #noEmployee>
+                <tr style="background: darkgrey;">
+                    <td colspan="8" class="text-center justify-content-center">No Employee Found</td>
+                </tr>
+            </ng-template>
+        </table>
+    </div>
+    <br />
+    <div class="fluid-container actions-container" >
+        <a  class="btn btn-dark" [routerLink]="['/addEmployee']" style="background-color: #009ca6; border-color: #009ca6;"><i class="fa fa-plus"> </i> Add New Employee </a>
+    </div>
+    <br>
+</div>
