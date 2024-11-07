@@ -1,1 +1,48 @@
-<p>details works!</p>
+<div class="container">
+    <div class="row justify-content-center mt-4">
+      <div class="col-lg-8">
+        <div class="card custom-card">
+          <h5 class="card-header text-center"><b>{{employee?.employeeName}}</b></h5>
+            
+          <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                  <strong>Email :</strong>
+                </div>
+                <div class="col-md-6">
+                  {{employee?.email}}
+                </div>
+              </div>
+            <div class="row">
+              <div class="col-md-6">
+                <strong>Phone number :</strong>
+              </div>
+              <div class="col-md-6">
+                {{employee?.phone}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <strong>Department :</strong>
+              </div>
+              <div class="col-md-6">
+                {{employee?.department?.departmentName}}
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+   <br />
+    <div class="text-center" style="margin-bottom: 20px;">
+      <a  class="btn btn-outline-info m-1" [routerLink]="['/updateEmployee', employee?.employeeId]" routerLinkActive="router-link-active">
+        <i class="fas fa-edit"></i> <b>Edit</b>
+      </a>
+      <!-- <button  class="btn btn-outline-danger m-1" (click)="deleteBook(employee?.employeeId)">
+        <i class="fas fa-trash-alt"></i> <b>Delete</b>
+      </button> -->
+      <a class="btn btn-outline-secondary m-1" [routerLink]="['/employeeList']" routerLinkActive="router-link-active"><b>Back to List</b></a>
+    </div>
+  </div>
+  
